@@ -1,0 +1,17 @@
+services:
+  sample-app:
+    container_name: sample-app
+    build: .
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.sample-app.rule=Host(`pi.yummymeatrecipes.com`) && PathPrefix(`/sample-app`)
+      - traefik.http.middlewares.sample-app-strip.stripprefix.prefixes=/sample-app
+      - traefik.http.routers.sample-app.middlewares=sample-app-strip
+      - traefik.http.services.sample-app.loadbalancer.server.port=8000
+    networks:
+      - web
+    restart: unless-stopped
+
+networks:
+  web:
+    external: true
