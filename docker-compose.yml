@@ -1,13 +1,13 @@
 services:
-  sampleApp:
+  sampleapp:
     build:
       context: .
     labels:
       - traefik.enable=true
-      - traefik.http.routers.sampleApp.rule=Host(`pi.yummymeatrecipes.com`) && PathPrefix(`/sampleApp`)
-      - traefik.http.middlewares.sampleApp-strip.stripprefix.prefixes=/sampleApp
-      - traefik.http.routers.sampleApp.middlewares=sampleApp-strip
-      - traefik.http.services.sampleApp.loadbalancer.server.port=8000
+      - traefik.http.routers.sampleapp.rule=Host(`pi.yummymeatrecipes.com`) && PathPrefix(`/sampleapp`)
+      - traefik.http.middlewares.sampleapp-strip.stripprefix.prefixes=/sampleapp
+      - traefik.http.routers.sampleapp.middlewares=sampleapp-strip
+      - traefik.http.services.sampleapp.loadbalancer.server.port=8000
     networks:
       - web
     restart: unless-stopped
