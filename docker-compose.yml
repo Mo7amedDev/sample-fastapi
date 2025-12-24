@@ -2,7 +2,7 @@ services:
   sampleapp:
     container_name: sample-app
     build:
-      context: ./sample-fastapi
+      context: .
     labels:
       - traefik.enable=true
       - traefik.http.routers.sampleapp.rule=Host(`pi.yummymeatrecipes.com`) && PathPrefix(`/sampleapp`)
